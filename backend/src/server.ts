@@ -1,5 +1,14 @@
 import express from "express";
 import { graphqlHTTP } from "express-graphql";
+var { buildSchema } = require("graphql");
+
+var schema = buildSchema(`
+  type Query {
+    hello: String
+  }
+`);
+
+var root = { hello: () => "Hello world!" };
 
 const app = express();
 
