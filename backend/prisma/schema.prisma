@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  first_name String?
+  last_name String?
+  email String  @unique
+  gender String?
+  avatar String?
+  company_name String?
+  phone String?
+  time_zone String?
+  lat Int?
+  long Int?
+  tickets Ticket[]?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Ticket {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  problem   String?
+  solved Boolean  @default(false)
+  status Status @relation(references: [id])
+  viewCount Int      @default(0)
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+  notes 
+}
+
+model Status {
+  id    Int    @id @default(autoincrement())
+  name  StatusName
+  tickets Ticket[] @relation(references: [id])
+}
+
+enum StatusName {
+  Open
+  Pending
+  Hold
+  Solved
+}
+
+model Note {
+  id    Int    @id @default(autoincrement())
+  subject  String
+  body  String
+  ticket Ticket @relation(references: [id])
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+  noteType  NoteType    @default(Email)
+}
+
+enum NoteType {
+  Email
+  PhoneLog
+}
