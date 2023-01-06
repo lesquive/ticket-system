@@ -31,8 +31,25 @@ type User {
     updatedAt: String
   }
 
+  input UserInput {
+    id: ID!
+    first_name: String
+    last_name: String
+    email: String!
+    gender: String
+    avatar: String
+    company_name: String
+    phone: String
+    time_zone: String
+    lat: Float
+    long: Float
+  }
+
   type Query {
     getUsers: [User]
     getUser (id: Int!): User
+    deleteUser (email: String!): User
+    updateUser (email: String!, data: UserInput): User
+    createUser (data: UserInput): User
   }
 `);
