@@ -21,3 +21,20 @@ export type UserUpdate = {
   email: string;
   data: User;
 };
+
+export type TicketUpdate = {
+  id: number;
+  data: Ticket;
+};
+
+export type Ticket = {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  title: string;
+  problem: string;
+  solved: Boolean;
+  status: string;
+  viewCount: number;
+  authorId: number;
+};

@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-import { Args, User, UserUpdate } from "./types";
+import { Args, User, UserUpdate, Ticket, TicketUpdate } from "./types";
 
 async function getUsers() {
   const users = await prisma.user.findMany({
@@ -60,6 +60,46 @@ async function getTickets() {
   return ticket;
 }
 
+async function getTicket(id: number) {
+  const ticket = await prisma.ticket.findUnique({
+    where: {
+      id: id,
+    },
+    include: {
+      notes: true,
+    },
+  });
+  return ticket;
+}
+
+async function createTicket(data: Ticket) {
+  let cleanData = JSON.parse(JSON.stringify(data))["data"];
+  const createTicket = await prisma.ticket.create({
+    data: cleanData,
+  });
+  return createTicket;
+}
+
+async function updateTicket(id: number, data: Ticket) {
+  let cleanData = JSON.parse(JSON.stringify(data));
+  const updatedTicket = await prisma.ticket.update({
+    data: cleanData,
+    where: {
+      id,
+    },
+  });
+  return updatedTicket;
+}
+
+async function deleteTicket(id: number) {
+  const deleteTicket = await prisma.ticket.delete({
+    where: {
+      id,
+    },
+  });
+  return deleteTicket;
+}
+
 export var root = {
   // get all users:
   getUsers: () => {
@@ -85,5 +125,21 @@ export var root = {
   // get all tickets:
   getTickets: () => {
     return getTickets();
+  },
+  // get a ticket:
+  getTicket: (args: Args) => {
+    return getTicket(args.id);
+  },
+  //create a ticket:
+  createTicket: async (data: Ticket) => {
+    return createTicket(data);
+  },
+  //update a ticket
+  updateTicket: (input: TicketUpdate) => {
+    return updateTicket(input.id, input.data);
+  },
+  // delete a specific ticket:
+  deleteTicket: (args: Args) => {
+    return deleteTicket(args.id);
   },
 };

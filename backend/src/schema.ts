@@ -56,16 +56,31 @@ type User {
     long: Float
   }
 
+  input TicketInput {
+    createdAt: String
+    updatedAt: String
+    title: String
+    problem: String
+    solved: Boolean
+    status: String
+    viewCount: Int
+    authorId: Int
+}
+
   type Query {
     getUsers: [User]
     getUser (id: Int!): User
     getTickets: [Ticket]
+    getTicket (id: Int!): Ticket
   }
 
   type Mutation {
     deleteUser (email: String!): User
     updateUser (email: String!, data: UserInput): User
     createUser (data: UserInput): User
+    createTicket (data: TicketInput): Ticket
+    updateTicket (id: Int!, data: TicketInput): Ticket
+    deleteTicket (id: Int!): Ticket
   }
 
 `);
