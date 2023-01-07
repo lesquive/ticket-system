@@ -16,3 +16,8 @@ export type User = {
   lat: number;
   long: number;
 };
+
+export type UserUpdate = {
+  email: string;
+  data: User;
+};

@@ -2,6 +2,17 @@ var { buildSchema } = require("graphql");
 
 export var schema = buildSchema(`
 
+type Note {
+    id: ID!
+    subject: String
+    body: String 
+    ticket: Ticket
+    author: User
+    authorId: Int
+    noteType: String
+    ticketId: Int
+}
+
 type Ticket {
     id: ID!
     createdAt: String
@@ -12,6 +23,7 @@ type Ticket {
     status: String
     viewCount: Int
     authorId: Int
+    notes: [Note]
 }
 
 type User {
@@ -32,7 +44,6 @@ type User {
   }
 
   input UserInput {
-    id: ID!
     first_name: String
     last_name: String
     email: String!
@@ -48,8 +59,13 @@ type User {
   type Query {
     getUsers: [User]
     getUser (id: Int!): User
+    getTickets: [Ticket]
+  }
+
+  type Mutation {
     deleteUser (email: String!): User
     updateUser (email: String!, data: UserInput): User
     createUser (data: UserInput): User
   }
+
 `);

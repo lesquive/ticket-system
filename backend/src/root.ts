@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-import { Args, User } from "./types";
+import { Args, User, UserUpdate } from "./types";
 
 async function getUsers() {
   const users = await prisma.user.findMany({
@@ -29,11 +29,13 @@ async function deleteUser(email: string) {
       email: email,
     },
   });
+  return deleteUser;
 }
 
 async function updateUser(email: string, data: User) {
+  let cleanData = JSON.parse(JSON.stringify(data));
   const updatedUser = await prisma.user.update({
-    data,
+    data: cleanData,
     where: {
       email,
     },
@@ -42,10 +44,20 @@ async function updateUser(email: string, data: User) {
 }
 
 async function createUser(data: User) {
-  const createUse = await prisma.user.create({
-    data,
+  let cleanData = JSON.parse(JSON.stringify(data))["data"];
+  const createUser = await prisma.user.create({
+    data: cleanData,
   });
-  return createUse;
+  return createUser;
+}
+
+async function getTickets() {
+  const ticket = await prisma.ticket.findMany({
+    include: {
+      notes: true,
+    },
+  });
+  return ticket;
 }
 
 export var root = {
@@ -62,11 +74,16 @@ export var root = {
     return deleteUser(args.email);
   },
   // update a specific user:
-  updateUser: (args: Args, data: User) => {
-    return updateUser(args.email, data);
+  updateUser: (input: UserUpdate) => {
+    return updateUser(input.email, input.data);
   },
   // create a specific user:
-  createUser: (data: User) => {
+  createUser: async (data: User) => {
     return createUser(data);
+  },
+
+  // get all tickets:
+  getTickets: () => {
+    return getTickets();
   },
 };
