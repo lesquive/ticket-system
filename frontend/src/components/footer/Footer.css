@@ -1,0 +1,16 @@
+.footerBox {
+  min-width: 100%;
+  position: fixed;
+  bottom: 0%;
+  margin-bottom: 1rem;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icon {
+  margin-left: 0.5rem;
+}
