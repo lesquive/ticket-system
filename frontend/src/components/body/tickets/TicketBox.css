@@ -1,0 +1,13 @@
+.ticketBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  justify-content: center;
+}
+
+.ticketBox > :not(style) {
+  margin: 1px;
+  width: inherit;
+  height: 6rem;
+}
