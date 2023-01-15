@@ -6,7 +6,14 @@ export default function Body() {
   return (
     <div className="body">
       <div className="tickets">
-        <TicketBox />
+        <TicketBox
+          title={"Title"}
+          status={"Status"}
+          author={"Author"}
+          avatar={"Avatar"}
+          created={"Created At"}
+          updated={"Updated At"}
+        />
         <TicketBox />
         <TicketBox />
         <TicketBox />
