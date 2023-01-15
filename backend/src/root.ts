@@ -51,12 +51,13 @@ async function createUser(data: User) {
   return createUser;
 }
 
-async function getTickets() {
+async function getTicketSummary() {
   const ticket = await prisma.ticket.findMany({
     include: {
-      notes: true,
+      author: true,
     },
   });
+  console.log(ticket);
   return ticket;
 }
 
@@ -67,6 +68,7 @@ async function getTicket(id: number) {
     },
     include: {
       notes: true,
+      author: true,
     },
   });
   return ticket;
@@ -123,8 +125,8 @@ export var root = {
   },
 
   // get all tickets:
-  getTickets: () => {
-    return getTickets();
+  getTicketSummary: () => {
+    return getTicketSummary();
   },
   // get a ticket:
   getTicket: (args: Args) => {

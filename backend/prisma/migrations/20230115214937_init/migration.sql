@@ -9,8 +9,8 @@ CREATE TABLE "User" (
     "company_name" TEXT,
     "phone" TEXT,
     "time_zone" TEXT,
-    "lat" INTEGER,
-    "long" INTEGER,
+    "lat" REAL,
+    "long" REAL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );
@@ -25,8 +25,8 @@ CREATE TABLE "Ticket" (
     "solved" BOOLEAN NOT NULL DEFAULT false,
     "status" TEXT,
     "viewCount" INTEGER NOT NULL DEFAULT 0,
-    "authorId" INTEGER,
-    CONSTRAINT "Ticket_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    "userId" INTEGER,
+    CONSTRAINT "Ticket_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- CreateTable

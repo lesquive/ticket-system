@@ -22,7 +22,7 @@ type Ticket {
     solved: Boolean
     status: String
     viewCount: Int
-    authorId: Int
+    author: User
     notes: [Note]
 }
 
@@ -64,13 +64,13 @@ type User {
     solved: Boolean
     status: String
     viewCount: Int
-    authorId: Int
+    author: Int
 }
 
   type Query {
     getUsers: [User]
     getUser (id: Int!): User
-    getTickets: [Ticket]
+    getTicketSummary: [Ticket]
     getTicket (id: Int!): Ticket
   }
 

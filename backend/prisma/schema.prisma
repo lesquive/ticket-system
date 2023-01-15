@@ -37,9 +37,9 @@ model Ticket {
   solved    Boolean  @default(false)
   status    String?
   viewCount Int      @default(0)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+  author    User     @relation(fields: [userId], references: [id])
   notes     Note[]
+  userId    Int
 }
 
 model Note {

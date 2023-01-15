@@ -36,5 +36,5 @@ export type Ticket = {
   solved: Boolean;
   status: string;
   viewCount: number;
-  authorId: number;
+  author: [User];
 };
