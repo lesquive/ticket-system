@@ -48,6 +48,20 @@ async function main() {
               ],
             },
           },
+          {
+            title: "CUCM Crash",
+            problem: "CUCM Upgrade failing",
+            solved: false,
+            status: "Open",
+            notes: {
+              create: [
+                {
+                  subject: "Initial contact",
+                  body: "Hey, I need help ASAP!",
+                },
+              ],
+            },
+          },
         ],
       },
     },

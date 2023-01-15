@@ -25,8 +25,8 @@ CREATE TABLE "Ticket" (
     "solved" BOOLEAN NOT NULL DEFAULT false,
     "status" TEXT,
     "viewCount" INTEGER NOT NULL DEFAULT 0,
-    "userId" INTEGER,
-    CONSTRAINT "Ticket_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    "userId" INTEGER NOT NULL,
+    CONSTRAINT "Ticket_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
