@@ -1,15 +1,19 @@
 import React from "react";
 import TicketBox from "./tickets/TicketBox";
+import { useEffect } from "react";
+import { useTicket } from "./../../context/TicketContext";
 import "./Body.css";
-import { getTicketSummary } from "./tickets/TicketsQueries";
-import { useQuery } from "@apollo/client";
 
 export default function Body() {
-  const { data, loading, error } = useQuery(getTicketSummary);
+  const { ticketSummary } = useTicket();
 
-  console.log(data);
-  console.log(loading);
-  console.log(error);
+  useEffect(() => {
+    let abortController = new AbortController();
+    console.log(ticketSummary);
+    return () => {
+      abortController.abort();
+    };
+  }, [ticketSummary]);
 
   return (
     <div className="body">

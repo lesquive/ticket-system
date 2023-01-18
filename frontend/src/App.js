@@ -2,6 +2,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Body from "./components/body/Body";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { TicketProvider } from "./context/TicketContext";
 import "./App.css";
 
 const client = new ApolloClient({
@@ -13,9 +14,11 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <Header />
-        <Body />
-        <Footer />
+        <TicketProvider>
+          <Header />
+          <Body />
+          <Footer />
+        </TicketProvider>
       </ApolloProvider>
     </>
   );
