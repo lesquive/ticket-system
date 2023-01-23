@@ -27,6 +27,18 @@ export type TicketUpdate = {
   data: Ticket;
 };
 
+export type CreateTicket = {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  title: string;
+  problem: string;
+  solved: Boolean;
+  status: string;
+  viewCount: number;
+  author: number;
+};
+
 export type Ticket = {
   id: number;
   createdAt: string;

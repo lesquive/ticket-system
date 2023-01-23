@@ -1,6 +1,13 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-import { Args, User, UserUpdate, Ticket, TicketUpdate } from "./types";
+import {
+  Args,
+  User,
+  UserUpdate,
+  Ticket,
+  TicketUpdate,
+  CreateTicket,
+} from "./types";
 
 async function getUsers() {
   const users = await prisma.user.findMany({
@@ -74,7 +81,7 @@ async function getTicket(id: number) {
   return ticket;
 }
 
-async function createTicket(data: Ticket) {
+async function createTicket(data: CreateTicket) {
   let cleanData = JSON.parse(JSON.stringify(data))["data"];
   const createTicket = await prisma.ticket.create({
     data: cleanData,
@@ -133,7 +140,7 @@ export var root = {
     return getTicket(args.id);
   },
   //create a ticket:
-  createTicket: async (data: Ticket) => {
+  createTicket: async (data: CreateTicket) => {
     return createTicket(data);
   },
   //update a ticket
