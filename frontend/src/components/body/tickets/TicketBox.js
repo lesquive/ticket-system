@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import "./TicketBox.css";
 import Grid from "@mui/material/Grid";
 import CardContent from "@mui/material/CardContent";
+import AvatarImg from "./../../shared/Avatar";
 
 export default function TicketBox(props) {
   const { title, status, author, avatar, created, updated } = props;
@@ -28,7 +29,7 @@ export default function TicketBox(props) {
               <>{author}</>
             </Grid>
             <Grid item>
-              <>{avatar}</>
+              <AvatarImg url={avatar} />
             </Grid>
             <Grid item>
               <>{created} </>
