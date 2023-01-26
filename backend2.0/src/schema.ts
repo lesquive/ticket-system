@@ -1,5 +1,3 @@
-import { users, tickets } from "./db.js";
-
 export const typeDefs = `#graphql
 
 enum AllowedStatus {
@@ -47,16 +45,3 @@ type User {
   }
 
 `;
-
-export const resolvers = {
-  Query: {
-    users: () => users,
-    tickets: () => tickets,
-    userTickets: (parent, args, ctx) => {
-      return tickets.filter((ticket) => {
-        console.log(args);
-        return ticket.user === args.id;
-      });
-    },
-  },
-};
