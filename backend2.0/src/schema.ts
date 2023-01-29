@@ -44,4 +44,32 @@ type User {
     userTickets(id: ID!): [Ticket]
   }
 
+  type Mutation {
+    addUser(
+      first_name: String
+      last_name: String
+      email: String!
+      gender: String
+      avatar: String
+      company_name: String
+      phone: String
+      time_zone: String
+      lat: Float
+      long: Float
+      createdAt: String
+      updatedAt: String
+    ): User
+    addTicket(
+      createdAt: Int
+      updatedAt: Int
+      title: String
+      summary: String
+      solved: Boolean
+      status: AllowedStatus
+      user: String!
+    ): Ticket
+    removeUser(id: ID!): Boolean!
+    removeTicket(id: ID!): Boolean!
+  }
+
 `;
