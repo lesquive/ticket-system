@@ -12,11 +12,6 @@ export function TicketProvider({ children }) {
   const [ticketSummary, setTicketSummary] = useState();
   const ticketSum = useQuery(getTicketSummary);
 
-  //   const handleGetTicketSummary = function () {
-  //     console.log(ticketSummary);
-  //     return ticketSummary;
-  //   };
-
   useEffect(() => {
     let abortController = new AbortController();
     if (ticketSum.error) {

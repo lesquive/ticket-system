@@ -2,16 +2,16 @@ import { gql } from "@apollo/client";
 
 export const getTicketSummary = gql`
   {
-    getTicketSummary {
+    tickets {
       id
       createdAt
-      updatedAt
-      title
       status
-      author {
-        first_name
-        last_name
+      title
+      updatedAt
+      user {
         avatar
+        last_name
+        first_name
       }
     }
   }

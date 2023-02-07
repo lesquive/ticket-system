@@ -28,21 +28,17 @@ export default function Body() {
           updated={"Updated At"}
         />
         {ticketSummary &&
-          ticketSummary.getTicketSummary.map((ticket) => (
+          ticketSummary.tickets.map((ticket) => (
             <TicketBox
               key={ticket.id}
               title={ticket.title}
               status={ticket.status}
-              author={`${ticket.author.first_name} ${ticket.author.last_name}`}
-              avatar={ticket.author.avatar}
+              author={`${ticket.user.first_name} ${ticket.user.last_name}`}
+              avatar={ticket.user.avatar}
               created={<UnixTimestamp timestamp={ticket.createdAt} />}
-              updated={ticket.updatedAt}
+              updated={<UnixTimestamp timestamp={ticket.updatedAt} />}
             />
           ))}
-        {/* <TicketBox />
-        <TicketBox />
-        <TicketBox />
-        <TicketBox /> */}
       </div>
     </div>
   );
