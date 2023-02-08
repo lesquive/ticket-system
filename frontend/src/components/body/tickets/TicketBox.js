@@ -19,14 +19,33 @@ export default function TicketBox(props) {
             alignItems="center"
             sx={{ mt: "auto" }}
           >
-            <Grid item>{title}</Grid>
-            <Grid item>{status}</Grid>
-            <Grid item>{author}</Grid>
-            <Grid item>
-              <AvatarImg url={avatar} />
+            <Grid item className="item">
+              {updated}
             </Grid>
-            <Grid item>{created}</Grid>
-            <Grid item>{updated}</Grid>
+            <Grid item className="item">
+              {title}
+            </Grid>
+            <Grid item className="item">
+              {status}
+            </Grid>
+            <Grid item className="item">
+              <Grid
+                container
+                justify="center"
+                alignItems="center"
+                direction="column"
+              >
+                {avatar ? (
+                  <Grid item>
+                    <AvatarImg url={avatar} />
+                  </Grid>
+                ) : null}
+                <Grid item>{author}</Grid>
+              </Grid>
+            </Grid>
+            <Grid item className="item">
+              {created}
+            </Grid>
           </Grid>
         </CardContent>
       </Card>

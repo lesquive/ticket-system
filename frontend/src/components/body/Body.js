@@ -23,9 +23,8 @@ export default function Body() {
           title={"Title"}
           status={"Status"}
           author={"Author"}
-          avatar={"Avatar"}
           created={"Created At"}
-          updated={"Updated At"}
+          updated={"Last Update"}
         />
         {ticketSummary &&
           ticketSummary.tickets.map((ticket) => (

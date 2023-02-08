@@ -1,8 +1,8 @@
 .footerBox {
   min-width: 100%;
-  position: fixed;
   bottom: 0%;
   margin-bottom: 1rem;
+  margin-top: 3rem;
 }
 
 .message {

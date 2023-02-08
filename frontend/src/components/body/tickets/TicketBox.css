@@ -1,3 +1,7 @@
+.Body {
+  margin-bottom: 1rem;
+}
+
 .ticketBox {
   display: flex;
   flex-wrap: wrap;
@@ -8,10 +12,13 @@
 
 .ticketBox > :not(style) {
   width: inherit;
-  height: 6rem;
 }
 
 .ticketCard {
   width: inherit;
   height: inherit;
+}
+
+.item {
+  width: 10%;
 }
