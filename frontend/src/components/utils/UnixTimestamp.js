@@ -1,4 +1,5 @@
 import React from "react";
+import Grid from "@mui/material/Grid";
 
 export default function UnixTimestamp(props) {
   let timestamp = props.timestamp;
@@ -11,5 +12,14 @@ export default function UnixTimestamp(props) {
     date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
   let seconds =
     date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds();
-  return `${hours}:${minutes}:${seconds} ${year}-${month}-${day}`;
+  return (
+    <Grid container justify="center" alignItems="center" direction="column">
+      <Grid item>
+        {hours}:{minutes}:{seconds}
+      </Grid>
+      <Grid item>
+        {month}-{day}-{year}
+      </Grid>
+    </Grid>
+  );
 }
