@@ -22,9 +22,10 @@ export default function Body() {
         <TicketBox
           title={"Title"}
           status={"Status"}
-          author={"Author"}
-          created={"Created At"}
+          author={"Client"}
+          created={"Created"}
           updated={"Last Update"}
+          header={true}
         />
         {ticketSummary &&
           ticketSummary.tickets.map((ticket) => (

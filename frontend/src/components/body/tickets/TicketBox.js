@@ -6,9 +6,17 @@ import CardContent from "@mui/material/CardContent";
 import AvatarImg from "./../../shared/Avatar";
 
 export default function TicketBox(props) {
-  const { title, status, author, avatar, created, updated } = props;
+  const {
+    title,
+    status,
+    author,
+    avatar,
+    created,
+    updated,
+    header = false,
+  } = props;
   return (
-    <Box className="ticketBox">
+    <Box className={`${header ? "header" : ""} ticketBox`}>
       <Card variant="outlined" className="ticketCard">
         <CardContent>
           <Grid
