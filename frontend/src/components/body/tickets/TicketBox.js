@@ -8,6 +8,7 @@ import AvatarImg from "./../../shared/Avatar";
 
 export default function TicketBox(props) {
   const {
+    keyID,
     title,
     status,
     author,
@@ -19,13 +20,19 @@ export default function TicketBox(props) {
 
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleClick = () => {
+    console.log("Box was clicked!");
+  };
+
   return (
     <Box
+      key={keyID}
       className={`${header ? "header" : ""} ticketBox ${
         !header && isHovered ? "hovered" : ""
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleClick}
     >
       <Card variant="outlined" className="ticketCard">
         <CardContent>

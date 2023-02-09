@@ -1,6 +1,10 @@
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import Body from "./components/body/Body";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import Ticket from "./pages/Ticket";
+import Client from "./pages/Client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import { TicketProvider } from "./context/TicketContext";
 import "./App.css";
@@ -16,7 +20,14 @@ function App() {
       <ApolloProvider client={client}>
         <TicketProvider>
           <Header />
-          <Body />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="ticket" element={<Ticket />} />
+              <Route path="client" element={<Client />} />
+            </Routes>
+          </BrowserRouter>
           <Footer />
         </TicketProvider>
       </ApolloProvider>

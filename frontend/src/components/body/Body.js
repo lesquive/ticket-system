@@ -31,6 +31,7 @@ export default function Body() {
           ticketSummary.tickets.map((ticket) => (
             <TicketBox
               key={ticket.id}
+              keyID={ticket.id}
               title={ticket.title}
               status={ticket.status}
               author={`${ticket.user.first_name} ${ticket.user.last_name}`}
