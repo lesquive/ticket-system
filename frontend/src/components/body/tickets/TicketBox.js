@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import "./TicketBox.css";
@@ -15,8 +16,17 @@ export default function TicketBox(props) {
     updated,
     header = false,
   } = props;
+
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <Box className={`${header ? "header" : ""} ticketBox`}>
+    <Box
+      className={`${header ? "header" : ""} ticketBox ${
+        !header && isHovered ? "hovered" : ""
+      }`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <Card variant="outlined" className="ticketCard">
         <CardContent>
           <Grid

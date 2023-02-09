@@ -15,6 +15,11 @@
   font-weight: bold;
 }
 
+.hovered > :not(style) {
+  background-color: #bfd7ed;
+  cursor: pointer;
+}
+
 .ticketCard {
   width: inherit;
   height: inherit;
