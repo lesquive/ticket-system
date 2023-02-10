@@ -33,9 +33,6 @@ export default function TicketBox(props) {
       className={`${header ? "header" : ""} ticketBox ${
         !header && isHovered ? "hovered" : ""
       }`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={handleClick}
     >
       <Card variant="outlined" className="ticketCard">
         <CardContent>
@@ -46,6 +43,9 @@ export default function TicketBox(props) {
             justifyContent="space-around"
             alignItems="center"
             sx={{ mt: "auto" }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={handleClick}
           >
             <Grid item className="item">
               {updated}
