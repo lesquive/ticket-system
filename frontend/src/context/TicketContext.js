@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getTicketSummary } from "./../components/body/tickets/TicketsQueries";
+import { getTicketSummary } from "../components/homeBody/tickets/TicketsQueries";
 import { useQuery } from "@apollo/client";
 
 const TicketContext = createContext();

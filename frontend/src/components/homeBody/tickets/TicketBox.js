@@ -4,7 +4,8 @@ import Card from "@mui/material/Card";
 import "./TicketBox.css";
 import Grid from "@mui/material/Grid";
 import CardContent from "@mui/material/CardContent";
-import AvatarImg from "./../../shared/Avatar";
+import AvatarImg from "../../shared/Avatar";
+import { useNavigate } from "react-router-dom";
 
 export default function TicketBox(props) {
   const {
@@ -19,9 +20,11 @@ export default function TicketBox(props) {
   } = props;
 
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     console.log("Box was clicked!");
+    navigate(`/ticket/${keyID}`);
   };
 
   return (

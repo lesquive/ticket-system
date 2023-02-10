@@ -1,7 +1,7 @@
 import React from "react";
 import TicketBox from "./tickets/TicketBox";
 import { useEffect } from "react";
-import { useTicket } from "./../../context/TicketContext";
+import { useTicket } from "../../context/TicketContext";
 import UnixTimestamp from "../utils/UnixTimestamp";
 import "./Body.css";
 

@@ -1,5 +1,8 @@
+import { useParams } from "react-router-dom";
+
 const Client = () => {
-  return <h1>Client Info</h1>;
+  let { id } = useParams();
+  return <h1>Client Info: {id} </h1>;
 };
 
 export default Client;

@@ -1,4 +1,4 @@
-import Body from "../components/body/Body";
+import Body from "../components/homeBody/Body";
 
 const Home = () => {
   return <Body />;
