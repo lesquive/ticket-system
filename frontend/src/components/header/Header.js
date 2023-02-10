@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import DynamicFeedIcon from "@mui/icons-material/DynamicFeed";
+import Search from "./../shared/Search";
 
 const pages = ["Tickets", "Clients", "About"];
 const settings = ["Profile", "Subscription", "Logout"];
@@ -128,7 +129,7 @@ function Header() {
               </Button>
             ))}
           </Box>
-
+          <Search />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
